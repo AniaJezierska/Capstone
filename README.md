@@ -3,6 +3,7 @@
 ## Introduction
 
 This is a Udacity-Full-Stack-Nanodegree course project that demonstrates the following:
+
     1. Database modeling with postgres & sqlalchemy 
     2. API to performance CRUD Operations on database with Flask 
     3. Automated testing with Unittest
