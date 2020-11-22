@@ -109,25 +109,19 @@ API permissions:
   - `patch:movies`: Can access the routePATCH /movies/${id}
    
 Roles:
-
-  Casting Assistant
-  get:actors
-    get:movies
+  - Casting Assistant
+      - `get:actors`
+      - `get:movies`
     
  Casting Director
-    get:actors
-    get:movies
-    delete:actors
-    post:actors
-    patch:actors
-    patch:movies
+
+  - All actions of a casting assistant plus
+      - `delete:actors`
+      - `post:actors`
+      - `patch:actors`
+      - `patch:movies`
     
  Executive Producer
-    get:actors
-    get:movies
-    delete:actors
-    post:actors
-    patch:actors
-    patch:movies
-    delete:movies
-    post:movies
+   - All actions of a casting director plus
+      - `delete:movies`
+      - `post:movies`
