@@ -109,18 +109,18 @@ $ curl -X GET https://casting.herokuapp.com/movies
   - `patch:movies`: Can access the routePATCH /movies/${id}
    
 #### Roles:
-  Casting Assistant
+  - Casting Assistant
      - `get:actors`
      - `get:movies`
     
- Casting Director
+  - Casting Director
      - all actions of a casting assistant plus
      - `delete:actors`
      - `post:actors`
      - `patch:actors`
      - `patch:movies`
     
- Executive Producer
+  - Executive Producer
      - all actions of a casting director plus
      - `delete:movies`
      - `post:movies`
