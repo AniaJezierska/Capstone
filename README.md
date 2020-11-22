@@ -11,7 +11,7 @@ This is a Udacity-Full-Stack-Nanodegree course project that demonstrates the fol
     5. Deployment on Heroku
 
 
-Getting Started
+## Getting Started
 
 To start and run the local development server
 
