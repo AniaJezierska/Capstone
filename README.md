@@ -3,12 +3,12 @@
 ## Introduction
 
 This is a Udacity-Full-Stack-Nanodegree course project that demonstrates the following:
-
-   1. Database modeling with postgres & sqlalchemy 
-   2. API to performance CRUD Operations on database with Flask 
-   3. Automated testing with Unittest
-   4. Authorization & Role based Authentification with Auth0 
-   5. Deployment on Heroku
+       1. Database modeling with postgres & sqlalchemy 
+       1. Database modeling with postgres & sqlalchemy 
+       2. API to performance CRUD Operations on database with Flask 
+       3. Automated testing with Unittest
+       4. Authorization & Role based Authentification with Auth0 
+       5. Deployment on Heroku
 
 ## Getting Started
 
