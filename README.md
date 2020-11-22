@@ -23,21 +23,28 @@ Install the latest version of python (https://www.python.org/downloads/)
 $ pip install -r requirements.txt
 ```
 
-Database Setup:
-Change database config so it can connect to your local postgres database
+#### Database Setup:
+Edit a informations in `config.py`, so it can connect to a local database.
 
-Running the server:
+#### SetupAuth0
+Edit a informations in `config.py` and insert your data.
+
+#### Running the server:
+```
 $ python app.py
+```
 
-Unit Testing
-
-To execute tests, run:
+#### Testing (optional)
+```
 $ python test_app.py
+```
 
+### API Documentation
 
-API Documentation
+#### Base URL
+To see the app on Heroku go to: https://hiltz-fsnd-capstone.herokuapp.com/
 
-Endpoints
+#### Endpoints
 
     Actors
     GET /actors
@@ -52,7 +59,7 @@ Endpoints
     PATCH /movies
 
 GET /actors
-$ curl -X GET https://castingcamp.herokuapp.com/actors
+$ curl -X GET https://casting.herokuapp.com/actors
 Example response:
 
 
