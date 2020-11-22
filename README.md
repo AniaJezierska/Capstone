@@ -29,12 +29,12 @@ Edit a informations in `config.py`, so it can connect to a local database.
 #### SetupAuth0
 Edit a informations in `config.py` and insert your data.
 
-#### Running the server:
+### Running the server:
 ```
 $ python app.py
 ```
 
-#### Testing (optional)
+### Testing (optional)
 ```
 $ python test_app.py
 ```
@@ -42,50 +42,92 @@ $ python test_app.py
 ## API Documentation
 
 ### Base URL
-To see the app on Heroku go to: https://hiltz-fsnd-capstone.herokuapp.com/
+To see the app on Heroku go to: https://casting.herokuapp.com/
 
 ### Endpoints
 
-    Actors
+#### Actors
     GET /actors
     POST /actors
     DELETE /actors
     PATCH /actors
 
-    Movies
+#### Movies
     GET /movies
     POST /movies
     DELETE /movies
     PATCH /movies
 
-GET /actors
+### GET/actors
+```
 $ curl -X GET https://casting.herokuapp.com/actors
-Example response:
+```
+#### Example response
+```
+{
+  "actors": [
+    {
+      "age": 50,
+      "gender": "Female",
+      "id": 1,
+      "name": "Amy"
+    }
+  ],
+  "success": true
+}
+```
 
+### GET/movies
+```
+$ curl -X GET https://casting.herokuapp.com/movies
+```
+#### Example response
+```
+{
+  "movies": [
+    {
+      "id": 1,
+      "releaseDate": ,
+      "title": "Grinch"
+    }
+  ],
+  "success": true
+}
+```
 
-Authentification
-Auth0 Roles
+### Authentification
+#### Auth0 Roles
 
 API permissions:
-get:actors: Can access the route GET '/actors'
-get:movies: Can access the route GET '/movies'
-delete:actors: Can access the routeDELETE /actors/${id}
-delete:movies: Can access the routeDELETE /movies/${id}
-post:actors: Can access the routePOST /actors
-post:movies: Can access the routePOST /movies
-patch:actors: Can access the routePATCH /actors/${id}
-patch:movies: Can access the routePATCH /movies/${id}
+   `get:actors`: Can access the route GET '/actors'
+   `get:movies`:  Can access the route GET '/movies'
+   `delete:actors`: Can access the routeDELETE /actors/${id}
+   `delete:movies`: Can access the routeDELETE /movies/${id}
+   `post:actors`: Can access the routePOST /actors
+   `post:movies`: Can access the routePOST /movies
+   `patch:actors`: Can access the routePATCH /actors/${id}
+   `patch:movies`: Can access the routePATCH /movies/${id}
+   
 Roles:
-Casting Assistant
-get:actors
-get:movies
-Casting Director
-All actions of a casting assistant plus
-delete:actors
-post:actors
-patch:actors
-patch:movies
-Executive Producer
-All actions of a casting director plus
-delete:movies
-post:movies
+
+  Casting Assistant
+    get:actors
+    get:movies
+    
+ Casting Director
+    get:actors
+    get:movies
+    delete:actors
+    post:actors
+    patch:actors
+    patch:movies
+    
+ Executive Producer
+    get:actors
+    get:movies
+    delete:actors
+    post:actors
+    patch:actors
+    patch:movies
+    delete:movies
+    post:movies
