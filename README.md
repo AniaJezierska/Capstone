@@ -39,12 +39,12 @@ $ python app.py
 $ python test_app.py
 ```
 
-### API Documentation
+## API Documentation
 
-#### Base URL
+### Base URL
 To see the app on Heroku go to: https://hiltz-fsnd-capstone.herokuapp.com/
 
-#### Endpoints
+### Endpoints
 
     Actors
     GET /actors
