@@ -16,7 +16,7 @@ This is a Udacity-Full-Stack-Nanodegree course project that demonstrates the fol
 To start and run the local development server
 
 Install the dependencies:
-$ pip install -r requirements.txt
+   $ pip install -r requirements.txt
 
 Database Setup:
 Change database config so it can connect to your local postgres database
