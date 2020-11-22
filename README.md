@@ -1,20 +1,8 @@
-# Coffee Shop Backend
+# FSND: Capstone Project
 
-## Getting Started
+## Introduction
 
-### Installing Dependencies
-
-#### Python 3.7
-
-Follow instructions to install the latest version of python for your platform in the [python docs](https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python)
-
-#### Virtual Enviornment
-
-FSND: Capstone Project
-
-Introduction
-
-This is a Udacity-Full-Stack-Nanodegree course project that demonstrates the following:
+### This is a Udacity-Full-Stack-Nanodegree course project that demonstrates the following:
     1. Database modeling with postgres & sqlalchemy 
     2. API to performance CRUD Operations on database with Flask 
     3. Automated testing with Unittest
