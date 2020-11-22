@@ -95,10 +95,10 @@ $ curl -X GET https://casting.herokuapp.com/movies
 }
 ```
 
-### Authentification
-#### Auth0 Roles
+## Authentification
+### Auth0 Roles
 
-API permissions:
+#### API permissions:
   - `get:actors`: Can access the route GET '/actors'
   - `get:movies`:  Can access the route GET '/movies'
   - `delete:actors`: Can access the routeDELETE /actors/${id}
@@ -108,20 +108,19 @@ API permissions:
   - `patch:actors`: Can access the routePATCH /actors/${id}
   - `patch:movies`: Can access the routePATCH /movies/${id}
    
-Roles:
-  - Casting Assistant
-      - `get:actors`
-      - `get:movies`
+#### Roles:
+  Casting Assistant
+     - `get:actors`
+     - `get:movies`
     
  Casting Director
-
-  - All actions of a casting assistant plus
-      - `delete:actors`
-      - `post:actors`
-      - `patch:actors`
-      - `patch:movies`
+     - all actions of a casting assistant plus
+     - `delete:actors`
+     - `post:actors`
+     - `patch:actors`
+     - `patch:movies`
     
  Executive Producer
-   - All actions of a casting director plus
-      - `delete:movies`
-      - `post:movies`
+     - all actions of a casting director plus
+     - `delete:movies`
+     - `post:movies`
