@@ -12,9 +12,13 @@ This is a Udacity-Full-Stack-Nanodegree course project that demonstrates the fol
 
 ## Getting Started
 
-To start and run the local development server
+### Installing Dependencies
 
-Install the dependencies:
+#### Python 3.7
+
+Install the latest version of python (https://www.python.org/downloads/)
+
+#### Install the dependencies:
    $ pip install -r requirements.txt
 
 Database Setup:
