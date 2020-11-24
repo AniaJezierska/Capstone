@@ -47,9 +47,6 @@ $ python test_app.py
 
 ## API Documentation
 
-### Base URL
-To see the app on Heroku go to: https://casting.herokuapp.com/
-
 ### Endpoints
 
 #### Actors
