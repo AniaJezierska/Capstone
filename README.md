@@ -37,9 +37,6 @@ $ python app.py
 ### Heroku
 To see the app go to: https://casting01.herokuapp.com
 
-### Authentication
-Authentication is done via Auth0 JWT-Tokens. 
-
 ### Testing (optional)
 ```
 $ python test_app.py
@@ -99,6 +96,8 @@ $ curl -X GET https://casting.herokuapp.com/movies
 ```
 
 ## Authentification
+Authentication is done via Auth0 JWT-Tokens. 
+
 ### Auth0 Roles
 
 #### API permissions:
