@@ -14,7 +14,7 @@ This is a Udacity-Full-Stack-Nanodegree course project that demonstrates the fol
 
 ### Installing Dependencies
 
-#### Python 3.7
+#### Python 3.8
 
 Install the latest version of python (https://www.python.org/downloads/)
 
