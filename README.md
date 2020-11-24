@@ -34,6 +34,12 @@ Edit a informations in `config.py` and insert your data.
 $ python app.py
 ```
 
+### Heroku
+To see the app go to: https://casting01.herokuapp.com
+
+### Authentication
+Authentication is done via Auth0 JWT-Tokens. 
+
 ### Testing (optional)
 ```
 $ python test_app.py
@@ -87,7 +93,7 @@ $ curl -X GET https://casting.herokuapp.com/movies
   "movies": [
     {
       "id": 1,
-      "releaseDate": ,
+      "releaseDate": 25,
       "title": "Grinch"
     }
   ],
