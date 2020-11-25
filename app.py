@@ -1,35 +1,27 @@
-#----------------------------------------------------------------------------#
-# Imports
-#----------------------------------------------------------------------------#
-
 import os
 from flask import Flask, request, abort, jsonify, abort
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from models import setup_db, Actors, Movies
-from auth import AuthError, requires_auth  
+from auth import AuthError, requires_auth
 
-
-#----------------------------------------------------------------------------#
-# App Config.
-#----------------------------------------------------------------------------#
 
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__)
     setup_db(app)
-    CORS(app) 
+    CORS(app)
 
     # set up CORS. Allow '*' for origins
     CORS(app, resources={r"/api/*": {"origins": "*"}})
 
-    # use the after_request decorator to set Access-Control-Allow 
+    # use the after_request decorator to set Access-Control-Allow
     @app.after_request
-    def after_request(response):     
-        # list of http request header values the server will allow        
+    def after_request(response):
+        # list of http request header values the server will allow
         response.headers.add('Access-Control-Allow-Headers',
                              'Content-Type,Authorization,true')
-        # list of HTTP request types allowed                             
+        # list of HTTP request types allowed
         response.headers.add('Access-Control-Allow-Methods',
                              'GET,PUT,POST,DELETE,OPTIONS')
         response.headers.add('Access-Control-Allow-Origin', '*')
@@ -39,18 +31,15 @@ def create_app(test_config=None):
     def healthy():
         return jsonify({
           'status': 'logged in'
-        })   
+        })
 
-
-# Actors endpoints
-#----------------------------------------------------------------------------#
+    # Actors endpoints
 
     #  Create an endpoint to handle GET requests for actors,
-
-    @app.route('/actors', methods=['GET'])    
+    @app.route('/actors', methods=['GET'])
     @requires_auth('get:actors')
     def get_actors(payload):
-        actors_query = Actors.query.all()   
+        actors_query = Actors.query.all()
 
         if actors_query is None:
             abort(404)
@@ -60,11 +49,9 @@ def create_app(test_config=None):
         return jsonify({
           'status': 'successful',
           'actors': actors
-          }), 200        
-     
+          }), 200
 
     #   Create an endpoint to POST a new actor.
-
     @app.route('/actors', methods=['POST'])
     @requires_auth('post:actor')
     def create_actor(payload):
@@ -81,11 +68,9 @@ def create_app(test_config=None):
 
         return jsonify({
           'status': 'successful'
-        }), 200            
-
+        }), 200
 
     #   Create an endpoint to DELETE an actor.
-
     @app.route('/actors/<int:id>', methods=['DELETE'])
     @requires_auth('delete:actor')
     def delete_actor(payload, id):
@@ -97,11 +82,9 @@ def create_app(test_config=None):
 
         return jsonify({
           'status': 'succesful'
-        }), 200        
+        }), 200
 
-
-    #   Create an endpoint to PATCH 
-
+    #   Create an endpoint to PATCH
     @app.route('/actors/<int:id>', methods=['PATCH'])
     @requires_auth('patch:actor')
     def edit_actor(payload, id):
@@ -119,15 +102,11 @@ def create_app(test_config=None):
 
         return jsonify({
           'status': 'successful'
-        }), 200        
+        }), 200
 
-
-
-# Movies endpoints
-#----------------------------------------------------------------------------#
+    # Movies endpoints
 
     #  Create an endpoint to handle GET requests for movies,
-
     @app.route('/movies')
     @requires_auth('get:movies')
     def get_movies(payload):
@@ -140,9 +119,7 @@ def create_app(test_config=None):
           'movies': movies
         }), 200
 
-
     #   Create an endpoint to POST a new movie.
-
     @app.route('/movies', methods=['POST'])
     @requires_auth('create:movie')
     def create_movie(payload):
@@ -158,9 +135,7 @@ def create_app(test_config=None):
           'status': 'successful'
         }), 200
 
-
     #   Create an endpoint to DELETE an actor.
-
     @app.route('/movies/<int:id>', methods=['DELETE'])
     @requires_auth('delete:movie')
     def delete_movie(payload, id):
@@ -172,11 +147,9 @@ def create_app(test_config=None):
 
         return jsonify({
           'status': 'successful'
-        }), 200        
+        }), 200
 
-
-    #   Create an endpoint to PATCH 
-
+    #   Create an endpoint to PATCH
     @app.route('/movies/<int:id>', methods=['PATCH'])
     @requires_auth('patch:movie')
     def edit_movie(payload, id):
@@ -193,8 +166,7 @@ def create_app(test_config=None):
 
         return jsonify({
           'status': 'successful'
-        }), 200         
-
+        }), 200
 
     # error handlers
     @app.errorhandler(404)
@@ -225,13 +197,10 @@ def create_app(test_config=None):
     def internal_server_error(error):
         return jsonify({
             "success": False,
-            "error": 500,     
+            "error": 500,
             "message": "Internal server error"
         }), 500
 
-
     return app
 
-app = create_app()    
-
-
+app = create_app()
