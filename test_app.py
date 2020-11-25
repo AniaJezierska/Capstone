@@ -29,8 +29,8 @@ class Casting_Test(unittest.TestCase):
 
         self.headers = {
             'Content-Type': 'application/json',
-            'Authorization": "Bearer {}".format(token)
-        }
+            'Authorization': 'Bearer',
+            'Token': token}
 
         self.actor = Actors(
             name='Amy',
