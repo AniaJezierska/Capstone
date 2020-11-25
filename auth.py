@@ -10,21 +10,22 @@ ALGORITHMS = ['RS256']
 API_AUDIENCE = 'casting'
 
 
-class AuthError(Exception):   
+class AuthError(Exception):
     def __init__(self, error, status_code):
         self.error = error
         self.status_code = status_code
 
 
-## Auth Header  
+# Auth Header
 def get_token_auth_header():
+
     if 'Authorization' not in request.headers:
         abort(401)
     auth_header = request.headers['Authorization'].split(' ')
     token = auth_header[1]
 
     if len(auth_header) != 2:
-        abort(401)  
+        abort(401)
     elif auth_header[0].lower() != 'bearer':
         abort(401)
     return token
@@ -86,7 +87,7 @@ def verify_decode_jwt(token):
         except jwt.JWTClaimsError:
             raise AuthError({
                 'code': 'invalid_claims',
-                'description': 'Incorrect claims. Please, check the audience and issuer.'
+                'description': 'Incorrect claims.'
             }, 401)
 
         except Exception:
@@ -109,9 +110,9 @@ def requires_auth(permission=''):
                 payload = verify_decode_jwt(token)
             except:
                 abort(401)
-            check_permissions(permission,payload)
+            check_permissions(permission, payload)
+
             return f(payload, *args, **kwargs)
-            
+
         return wrapper
     return requires_auth_decorator
-
