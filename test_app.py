@@ -7,17 +7,15 @@ from app import create_app
 from models import setup_db, Actors, Movies
 
 
-token = ''    
-expired_token = ''   
+token = ''
+expired_token = ''
 permissions_not_included_token = ''
 expired_header = 'Bearer' + ' ' + expired_token
 permission_not_found = 'Bearer' + permissions_not_included_token
 header = 'Bearer' + ' ' + token
-expired_auth_header = {'Authorization': expired_header
-}
-auth_header = {'Authorization': header   
-}     
-      
+expired_auth_header = {'Authorization': expired_header}
+auth_header = {'Authorization': header}
+
 
 class Casting_Test(unittest.TestCase):
     """This class represents the trivia test case"""
@@ -38,12 +36,12 @@ class Casting_Test(unittest.TestCase):
             name='Amy',
             age='50',
             gender='Female'
-        )      
+        )
 
         self.movie = Movies(
             title='Grinch',
             release_date='25'
-        ) 
+        )
 
         self.new_actor = {
             'name': 'Jason',
@@ -54,7 +52,7 @@ class Casting_Test(unittest.TestCase):
         self.new_movie = {
             'title': 'Holiday',
             'release_date': '28'
-        }                     
+        }
 
         with self.app.app_context():
             self.db = SQLAlchemy()
@@ -63,12 +61,11 @@ class Casting_Test(unittest.TestCase):
             self.db.create_all()
 
         self.actor.insert()
-        self.movie.insert()        
+        self.movie.insert()
 
     def tearDown(self):
         """Executed after reach test"""
-        pass    
-      
+        pass
 
     def test_get_actors(self):
         response = self.client().get('/actors', headers=auth_header)
