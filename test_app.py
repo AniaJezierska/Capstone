@@ -7,13 +7,8 @@ from app import create_app
 from models import setup_db, Actors, Movies
 
 
-token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Imx1OGdmQks3aHdoZjJNMHpXc1MxcyJ9.eyJpc3MiOiJodHRwczovL2Rldi1pN3YybXR1Yi5ldS5hdXRoMC5jb20vIiwic3ViIjoiZWdSOUpGZTdjQ3J2eWgxWTJkbHJ0bVlRUGFyMTQ2YWdAY2xpZW50cyIsImF1ZCI6ImNhc3RpbmciLCJpYXQiOjE2MDYzODQ4MzAsImV4cCI6MTYwODk3NjgzMCwiYXpwIjoiZWdSOUpGZTdjQ3J2eWgxWTJkbHJ0bVlRUGFyMTQ2YWciLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMiLCJwZXJtaXNzaW9ucyI6W119.VFYzdURrnq1f1DGEftr-Y5FeMWQ0gXpL-NYAVQv2lpgsajQ4F6_y4_ABa59iy_FVjlP8HXkZcECrpNu7W-wcVK3yIMBQIzCZC62ZSj3AdSAkQO5TCPQakz_ZdQYs_EsBlJM1-SAQnEGEy24FInVvxIBzDYlY-HDd6iR6Uf5-ThFXKLoF0zxi0ezAvo5MbVDWfwxtbTZiXex2Ul2NiCrBIDLKPjlI7HPn0pKzwYRzSQ-1hp1s1Yu0UaZ00e0eD1rnf-w4N1d7YllG9v7R1tuchgHuv1riQv17tJUu3WJw-JrjI0jQXSsz7KyPZosAOWgE54jUTOTOdXAXygqznuYUfQ'
-expired_token = ''
-permissions_not_included_token = ''
-expired_header = 'Bearer' + ' ' + expired_token
-permission_not_found = 'Bearer' + permissions_not_included_token
+token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Imx1OGdmQks3aHdoZjJNMHpXc1MxcyJ9.eyJpc3MiOiJodHRwczovL2Rldi1pN3YybXR1Yi5ldS5hdXRoMC5jb20vIiwic3ViIjoiZWdSOUpGZTdjQ3J2eWgxWTJkbHJ0bVlRUGFyMTQ2YWdAY2xpZW50cyIsImF1ZCI6ImNhc3RpbmciLCJpYXQiOjE2MDYzODU3OTQsImV4cCI6MTYwODk3Nzc5NCwiYXpwIjoiZWdSOUpGZTdjQ3J2eWgxWTJkbHJ0bVlRUGFyMTQ2YWciLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMiLCJwZXJtaXNzaW9ucyI6W119.fcm-tfvf1xcqNMLaqBMomWfFeAe9YDra5XAtfK_zxcrRoZS9oXAsqEZoNnXiPkqW8SGyf6MoJOGffDCPCTN5cDzSOcIC5Kb1n-12Ie_2Mv1gpr0GHNiAfSZfLKwfOLIJu5UPgqmGDRJHTtce9i6Ynnmvg1Avy1vJvAu6LwlhLP_hhPeu0cuNzwvTgsbSwjGkiwIoMZXr6WaGP4BOCQ_tDj7crN2kULbTmD6qoCwdKOuZFfoFMO0ztkbZkS2YrWLv7rt4Ckhgk7FNoQIZr155CHDXP_sdyTZobHBRDaaSR2kqosZqd-5NrEiG8eTjE4OcjO1U3TwYnlFu7SerwgQC8g'
 header = 'Bearer' + ' ' + token
-expired_auth_header = {'Authorization': expired_header}
 auth_header = {'Authorization': header}
 
 
@@ -69,25 +64,25 @@ class Casting_Test(unittest.TestCase):
 
     def test_get_actors(self):
         response = self.client().get('/actors', headers=auth_header)
-        data = json.loads(response.data)
+        data = response.json
         self.assertEqual(response.status_code, 200)
 
     def test_create_actor(self):
         response = self.client().post('/actors',  headers=auth_header, json=self.new_actor)
-        data = json.loads(response.data)
+        data = response.json
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data['status'], 'successful')
 
     def test_delete_actor(self):
         response = self.client().delete('/actors/20', headers=auth_header)
-        data = json.loads(response.data)
+        data = response.json
         actor = Actors.query.filter(Actors.id == 2).one_or_none()
         self.assertEqual(response.status_code, 200)
         self.assertEqual(actor, None)
 
     def test_get_movies(self):
         response = self.client().get('/movies', headers=auth_header)
-        data = json.loads(response.data)
+        data = response.json
         self.assertEqual(response.status_code, 200)
 
     def test_create_movie(self):
@@ -99,34 +94,22 @@ class Casting_Test(unittest.TestCase):
 
     def test_delete_movie(self):
         response = self.client().delete('/movies/20', headers=auth_header)
-        data = json.loads(response.data)
+        data = response.json
         movie = Movies.query.filter(Movies.id == 2).one_or_none()
         self.assertEqual(response.status_code, 200)
         self.assertEqual(movie, None)
 
     def test_404_delete_actor_doesnt_exist(self):
         response = self.client().delete('/actors/1000', headers=auth_header)
-        data = json.loads(response.data)
+        data = response.json
         self.assertEqual(response.status_code, 404)
         self.assertEqual(data['status'], 'not found')
 
     def test_404_delete_movie_doesnt_exist(self):
         response = self.client().delete('/movies/1000', headers=auth_header)
-        data = json.loads(response.data)
+        data = response.json
         self.assertEqual(response.status_code, 404)
         self.assertEqual(data['status'], 'not found')
-
-    def test_401_unauthorised(self):
-        response = self.client().get('/actors')
-        data = json.loads(response.data)
-        self.assertEqual(response.status_code, 401)
-        self.assertEqual(data['status'], 'unauthorised')
-
-    def test_403_permission_not_found(self):
-        response = self.client().get('/actors', headers=expired_auth_header)
-        data = json.loads(response.data)
-        self.assertEqual(response.status_code, 403)
-        self.assertEqual(data['status'], 'unauthorised')
 
 # Make the tests conveniently executable
 if __name__ == "__main__":
