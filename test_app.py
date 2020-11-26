@@ -93,7 +93,7 @@ class Casting_Test(unittest.TestCase):
     def test_create_movie(self):
         response = self.client().\
             post('/movies', headers=auth_header, json=self.new_movie)
-        data = json.loads(response.data)
+        data = response.json
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data['status'], 'successful')
 
