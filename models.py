@@ -24,14 +24,14 @@ def db_drop_and_create_all():
 
 casting = db.Table('casting',
         db.Column(
-            'actor_id', 
-            db.Integer, 
-            db.ForeignKey('actors.id'), 
+            'actor_id',
+            db.Integer,
+            db.ForeignKey('actors.id'),
             primary_key=True),
         db.Column(
-            'movie_id', 
-            db.Integer, 
-            db.ForeignKey('movies.id'), 
+            'movie_id',
+            db.Integer,
+            db.ForeignKey('movies.id'),
             primary_key=True)
 )
 
