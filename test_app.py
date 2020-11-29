@@ -20,7 +20,7 @@ class Casting_Test(unittest.TestCase):
         self.app = create_app()
         self.client = self.app.test_client
         self.database_name = "casting_test"
-        self.database_path = "postgres://{}/{}".format('localhost:5432', self.database_name)
+        self.database_path = "postgres://{}/{}".format('localhost:8081', self.database_name)
 
         self.headers = {
             'Content-Type': 'application/json',
