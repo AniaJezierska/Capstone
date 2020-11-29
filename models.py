@@ -4,10 +4,8 @@ from sqlalchemy import Column, String, Integer, Float
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
-database_path = "postgres://sbjfszfpqlntne:bf5fe3afa867f7a7258255b325e76c94eb0f0dcdaa414de78bb111d93b4036a9@ec2-23-23-88-216.compute-1.amazonaws.com:5432/d9dfraseqcbdks"
-
-# database_name = "casting"
-# database_path = "postgres://{}/{}".format('localhost:5432', database_name)
+database_name = "casting"
+database_path = "postgres://{}/{}".format('localhost:5432', database_name)
 
 db = SQLAlchemy()
 
